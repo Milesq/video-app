@@ -8,16 +8,17 @@ import { ThemeContext } from '../../utils'
 function Navbar() {
   const dispatch = useDispatch()
   const choosenTheme = useContext(ThemeContext)
+  const isDark = choosenTheme === 'dark'
 
   const changeTheme = () => {
-    const newTheme = choosenTheme === 'light' ? 'dark' : 'light'
+    const newTheme = isDark ? 'light' : 'dark'
 
     dispatch(theme.changeTheme(newTheme))
   }
 
   return (
     <header>
-      <RSNavbar color="secondary" light>
+      <RSNavbar color={isDark ? 'dark' : 'secondary'}>
         <NavbarBrand
           href="/"
           className="mr-auto text-white d-flex align-items-center"
