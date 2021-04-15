@@ -10,17 +10,26 @@ import Footer from './components/layout/Footer'
 
 function App() {
   const choosenTheme = useSelector(state => state.theme.theme)
+  const isDark = choosenTheme === 'dark'
 
   return (
     <ThemeContext.Provider value={choosenTheme}>
       <div className="d-flex flex-column min-vh-100">
         <Navbar />
-        <Container className="mt-8" style={{ flex: '1' }}>
-          <section>
-            <AddVideos />
-            <ListVideos />
-          </section>
-        </Container>
+        <div
+          style={{
+            flex: '1',
+            backgroundColor: isDark ? '#22272e' : 'white',
+            color: isDark ? 'white' : 'black',
+          }}
+        >
+          <Container className="mt-8">
+            <section>
+              <AddVideos />
+              <ListVideos />
+            </section>
+          </Container>
+        </div>
         <Footer />
       </div>
     </ThemeContext.Provider>
