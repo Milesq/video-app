@@ -1,9 +1,13 @@
 import React from 'react'
 
-import Counter from './components/Counter'
+import Navbar from './components/layout/Navbar'
 
 function App() {
-  return <Counter />
+  return (
+    <>
+      <Navbar />
+    </>
+  )
 }
 
 export default App
