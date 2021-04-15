@@ -29,6 +29,9 @@ function Navbar() {
             src="/favicon.ico"
             alt="VideoApp's logo"
             className="mr-2"
+            style={{
+              filter: 'contrast(300%)',
+            }}
           />
 
           <h1 className="h4 m-0">Video App</h1>
