@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useDispatch } from 'react-redux'
 import { Navbar as RSNavbar, NavbarBrand } from 'reactstrap'
 
-import { theme, useSelector } from '../../store'
+import { theme } from '../../store'
+import { ThemeContext } from '../../utils'
 
 function Navbar() {
   const dispatch = useDispatch()
-  const choosenTheme = useSelector(state => state.theme.theme)
+  const choosenTheme = useContext(ThemeContext)
 
   const changeTheme = () => {
     const newTheme = choosenTheme === 'light' ? 'dark' : 'light'

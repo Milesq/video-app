@@ -6,15 +6,12 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import App from './App'
 import store from './store'
-import { ThemeContext } from './utils'
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeContext.Provider value="light">
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </ThemeContext.Provider>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 )
