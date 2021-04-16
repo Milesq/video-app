@@ -4,9 +4,9 @@ import { Container } from 'reactstrap'
 import { ThemeContext } from './utils'
 import { useSelector } from './store'
 import Navbar from './components/layout/Navbar'
-import AddVideos from './components/AddVideos'
-import ListVideos from './components/ListVideos'
 import Footer from './components/layout/Footer'
+import AddVideos from './components/video/AddVideos'
+import ListVideos from './components/video/ListVideos'
 
 function App() {
   const choosenTheme = useSelector(state => state.theme.theme)

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Center from './utils/Center'
+import Center from '../utils/Center'
 
 const icons = {
   likes: (

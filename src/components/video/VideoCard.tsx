@@ -8,7 +8,7 @@ import {
   Col,
 } from 'reactstrap'
 
-import Styles from '../sass/modules/VideoCars.module.scss'
+import Styles from '../../sass/modules/VideoCars.module.scss'
 
 import VideoStats from './VideoStats'
 

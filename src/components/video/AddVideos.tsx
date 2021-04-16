@@ -7,7 +7,7 @@ import {
   InputGroupAddon,
 } from 'reactstrap'
 
-import { useSelector } from '../store'
+import { useSelector } from '../../store'
 
 function AddVideos() {
   const choosenTheme = useSelector(state => state.theme.theme)
