@@ -6,16 +6,16 @@ import calculateCenterClasses, {
 
 function Center({
   children,
-  className,
+  className = '',
   x,
   y,
   columns,
-}: PropsWithChildren<CenterProps & { className: string }>) {
+}: PropsWithChildren<CenterProps & { className?: string }>) {
   const additionalClasses = calculateCenterClasses({
     x,
     y,
     columns,
-  }).concat(' ')
+  }).join(' ')
 
   return (
     <div className={`d-flex ${additionalClasses} ${className}`}>{children}</div>
