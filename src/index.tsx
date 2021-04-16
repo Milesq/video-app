@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 
-import './main.scss'
+import './sass/main.scss'
 
 import App from './App'
 import store from './store'
