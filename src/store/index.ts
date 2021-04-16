@@ -6,16 +6,19 @@ import {
 
 import * as theme from './theme'
 
-const store = configureStore({
-  reducer: {
-    theme: theme.reducer,
-  },
-})
+const getStore = () =>
+  configureStore({
+    reducer: {
+      theme: theme.reducer,
+    },
+  })
 
-export type RootState = ReturnType<typeof store.getState>
+type AppStore = ReturnType<typeof getStore>
+
+export type RootState = ReturnType<AppStore['getState']>
 
 export const useSelector: TypedUseSelectorHook<RootState> = useGenericSelector
 
 export { theme }
 
-export default store
+export default getStore
