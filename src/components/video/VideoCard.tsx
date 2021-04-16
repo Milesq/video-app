@@ -9,6 +9,7 @@ import {
 } from 'reactstrap'
 
 import Styles from '../../sass/modules/VideoCars.module.scss'
+import { useSelector } from '../../store'
 
 import VideoStats from './VideoStats'
 
@@ -19,11 +20,19 @@ interface VideoCardProps {
 }
 
 function VideoCard({ className, title }: PropsWithChildren<VideoCardProps>) {
+  const choosenTheme = useSelector(state => state.theme.theme)
+  const isDark = choosenTheme === 'dark'
+
   const [isFavorite, setIsFavorite] = useState(Math.random() > 0.5)
 
   return (
     <Col lg="4" md="6" className={className}>
-      <Card>
+      <Card
+        inverse={isDark}
+        style={
+          isDark ? { backgroundColor: '#33383f', borderColor: '#33383f' } : {}
+        }
+      >
         <CardImg
           width="100%"
           src="https://placeimg.com/318/180/animals"
