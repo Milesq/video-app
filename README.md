@@ -1,6 +1,7 @@
 # Video App
 
-This is a repo for a recruitment task for [Digimonkeys](http://digimonkeys.com/) company
+This is a repo for a recruitment task for [Digimonkeys](http://digimonkeys.com/) company.
+You can reach app here: [video-app-snowy.vercel.app](https://video-app-snowy.vercel.app/)
 
 ## Description
 
