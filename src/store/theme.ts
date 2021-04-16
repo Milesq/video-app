@@ -1,4 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
 export type Theme = 'light' | 'dark'
 
@@ -20,8 +22,12 @@ export const slice = createSlice({
   },
 })
 
-const {
-  reducer,
-  actions: { changeTheme },
-} = slice
-export { reducer, changeTheme }
+export const { changeTheme } = slice.actions
+
+export const reducer = persistReducer(
+  {
+    key: 'theme',
+    storage,
+  },
+  slice.reducer
+)
