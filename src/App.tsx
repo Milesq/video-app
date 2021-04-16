@@ -17,9 +17,9 @@ function App() {
       <div className="d-flex flex-column min-vh-100">
         <Navbar />
         <div
+          className={`bg-${isDark ? 'primary-dark' : 'white'}`}
           style={{
             flex: '1',
-            backgroundColor: isDark ? '#22272e' : 'white',
             color: isDark ? 'white' : 'black',
           }}
         >
