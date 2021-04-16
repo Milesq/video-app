@@ -8,7 +8,7 @@ function ListVideos() {
     <Container fluid>
       <Row>
         {new Array(7).fill(0).map((_, i) => (
-          <VideoCard className="my-3" key={i} />
+          <VideoCard title="Lorem Ipsum" className="my-3" key={i} />
         ))}
       </Row>
     </Container>

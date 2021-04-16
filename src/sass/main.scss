@@ -1,7 +1,9 @@
 $theme-colors: (
   "primary-dark": #22272e,
+  "insta-red": #ed4956,
 );
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
 @import "./dark-input.scss";
 @import "./utility.scss";
