@@ -39,7 +39,7 @@ function VideoStats({ likes, views, date }: VideoStatsProps) {
   return (
     <div className="d-flex justify-content-around">
       {data.map(([name, value]) => (
-        <Center key="name" y>
+        <Center key={name} y>
           {icons[name as IconType]}
           <span className="ml-1">{value}</span>
         </Center>
