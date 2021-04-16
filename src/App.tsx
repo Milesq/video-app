@@ -23,8 +23,8 @@ function App() {
             color: isDark ? 'white' : 'black',
           }}
         >
-          <Container className="mt-8">
-            <section>
+          <Container>
+            <section className="mt-md-5 mt-3">
               <AddVideos />
               <ListVideos />
             </section>
