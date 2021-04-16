@@ -3,3 +3,32 @@ $theme-colors: (
 );
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+.form-control--dark {
+  &,
+  &:focus {
+    background-color: $gray-800;
+    border-color: $gray-600;
+  }
+
+  &::placeholder {
+    color: white;
+  }
+}
+
+$breakpoints: sm, md, lg, xl, xxl;
+$sizes: 25, 50, 75, 100;
+
+@each $breakpoint in $breakpoints {
+  @include media-breakpoint-up($breakpoint) {
+    @each $size in $sizes {
+      .w-#{$breakpoint}-#{$size} {
+        width: $size * 1%;
+      }
+
+      .h-#{$breakpoint}-#{$size} {
+        height: $size * 1%;
+      }
+    }
+  }
+}
