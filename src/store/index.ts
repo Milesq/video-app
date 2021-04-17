@@ -14,11 +14,13 @@ import {
 } from 'redux-persist'
 
 import * as theme from './theme'
+import * as videoDisplayer from './videoDisplayer'
 
 export const getStore = () =>
   configureStore({
     reducer: {
       theme: theme.reducer,
+      videoDisplayer: videoDisplayer.reducer,
     },
     middleware: getDefaultMiddleware({
       serializableCheck: {
