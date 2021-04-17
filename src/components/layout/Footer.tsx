@@ -7,7 +7,11 @@ function Footer() {
   const isDark = theme === 'dark'
 
   return (
-    <footer className="p-4 text-center">
+    <footer
+      className={`p-4 text-center bg-${theme} font-weight-bold text-${
+        isDark ? 'white' : 'black'
+      }`}
+    >
       Miłosz Wiśniewski &copy; 2021 - zadanie rekrutacyjne
     </footer>
   )
