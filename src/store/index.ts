@@ -35,7 +35,7 @@ export type RootState = ReturnType<AppStore['getState']>
 
 export const useSelector: TypedUseSelectorHook<RootState> = useGenericSelector
 
-export { theme }
+export { theme, videoDisplayer }
 
 export default () => {
   const storeInstance = getStore()
