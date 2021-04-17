@@ -1,5 +1,6 @@
 export { ReactComponent as HearthIcon } from './hearth.svg'
 export { ReactComponent as ListIcon } from './list.svg'
+export { ReactComponent as TileIcon } from './tile.svg'
 export { ReactComponent as ThemeBtnIcon } from './theme-btn.svg'
 
 export { ReactComponent as LikeIcon } from './like.svg'
