@@ -66,5 +66,5 @@ export const slice = createSlice({
 
 export const {
   reducer,
-  actions: { changeDisplayMode },
+  actions: { changeDisplayMode, setFilter, setSortKey },
 } = slice
