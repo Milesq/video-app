@@ -1,71 +1,33 @@
-import React, { PropsWithChildren, useState } from 'react'
-import {
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Col,
-} from 'reactstrap'
+import React, { PropsWithChildren } from 'react'
 
-import Styles from '../../sass/modules/VideoCars.module.scss'
-import { useSelector } from '../../store'
-import { DeleteIcon, HearthIcon } from '../../svg'
+import Tile from './cards/Tile'
+import ListElement from './cards/ListElement'
 
-import VideoStats from './VideoStats'
+const styles = {
+  tile: Tile,
+  list: ListElement,
+}
 
-interface VideoCardProps {
+export interface VideoElementProps {
   className?: string
 
   title: string
+  isFavorite?: boolean
+  onLike?: (isLiked: boolean) => void
+  onDelete?: () => void
 }
 
-function VideoCard({ className, title }: PropsWithChildren<VideoCardProps>) {
-  const choosenTheme = useSelector(state => state.theme.theme)
-  const isDark = choosenTheme === 'dark'
+interface VideoCardProps {
+  style?: keyof typeof styles
+}
 
-  const [isFavorite, setIsFavorite] = useState(Math.random() > 0.5)
+function VideoCard({
+  style = 'tile',
+  ...props
+}: PropsWithChildren<VideoCardProps & VideoElementProps>) {
+  const VideoCardElement = styles[style]
 
-  return (
-    <Col lg="4" md="6" className={className}>
-      <Card
-        inverse={isDark}
-        style={
-          isDark ? { backgroundColor: '#33383f', borderColor: '#33383f' } : {}
-        }
-      >
-        <CardImg
-          width="100%"
-          src="https://placeimg.com/318/180/animals"
-          alt="Card image cap"
-        />
-        <CardBody>
-          <CardTitle tag="h5">{title}</CardTitle>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">
-            <VideoStats date="16.04.2021" likes="12" views="120" />
-          </CardSubtitle>
-
-          <div className="d-flex justify-content-around mt-4 text-black-50">
-            <HearthIcon
-              width="32"
-              onClick={() => setIsFavorite(is => !is)}
-              stroke="var(--insta-red)"
-              className={`cursor-pointer ${
-                isFavorite
-                  ? 'text-insta-red'
-                  : `${Styles.heart} text-transparent`
-              }`}
-            />
-
-            <DeleteIcon
-              className={`${Styles.delete} cursor-pointer`}
-              width="32"
-            />
-          </div>
-        </CardBody>
-      </Card>
-    </Col>
-  )
+  return <VideoCardElement {...props} />
 }
 
 export default VideoCard
