@@ -27,7 +27,7 @@ async function getYoutubeVideo(id: string): Promise<YTResponse> {
   const url = new URL(API)
   url.searchParams.set('part', 'snippet,statistics,player')
   url.searchParams.set('id', id)
-  url.searchParams.set('key', process.env.YT_API_KEY as string)
+  url.searchParams.set('key', process.env.REACT_APP_YT_API_KEY as string)
 
   const resp = await fetch(url.href)
   return await resp.json()
