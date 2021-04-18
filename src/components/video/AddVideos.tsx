@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import { useDispatch } from 'react-redux'
 import {
   Button,
   Input,
@@ -7,15 +8,19 @@ import {
   InputGroupAddon,
 } from 'reactstrap'
 
-import { useSelector } from '../../store'
+import { useSelector, videos } from '../../store'
 
 function AddVideos() {
+  const dispatch = useDispatch()
   const choosenTheme = useSelector(state => state.theme.theme)
   const isDark = choosenTheme === 'dark'
   const newMovieHandler: InputProps['innerRef'] = useRef(null)
 
   const handleAddMovie = () => {
-    console.log(newMovieHandler.current)
+    if (!newMovieHandler.current) return
+
+    dispatch(videos.addVideo(newMovieHandler.current.value))
+    newMovieHandler.current.value = ''
   }
 
   return (
