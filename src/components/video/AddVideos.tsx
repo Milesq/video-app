@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import {
   Button,
@@ -12,21 +12,39 @@ import { useSelector, videos } from '../../store'
 
 function AddVideos() {
   const dispatch = useDispatch()
-  const choosenTheme = useSelector(state => state.theme.theme)
+  const choosenTheme = useSelector(({ theme }) => theme.theme)
+  const videoError = useSelector(({ videos }) => videos.error)
+  const isAdderBusy = useSelector(({ videos }) => videos.pending)
+
+  console.log(isAdderBusy)
+
   const isDark = choosenTheme === 'dark'
   const newMovieHandler: InputProps['innerRef'] = useRef(null)
 
-  const handleAddMovie = () => {
-    if (!newMovieHandler.current) return
+  useEffect(() => {
+    // prettier-ignore
+    if (
+      videoError !== null
+      || isAdderBusy
+      || newMovieHandler.current === null
+    )
+      return
 
-    dispatch(videos.addVideo(newMovieHandler.current.value))
     newMovieHandler.current.value = ''
+  }, [videoError])
+
+  const handleAddMovie = () => {
+    if (newMovieHandler.current === null) return
+
+    dispatch(videos.addVideo(newMovieHandler.current?.value))
   }
 
   return (
     <div className="d-flex justify-content-center">
       <InputGroup className="w-md-50">
         <Input
+          disabled={isAdderBusy}
+          invalid={Boolean(videoError)}
           innerRef={newMovieHandler}
           onKeyDown={ev => ev.key === 'Enter' && handleAddMovie()}
           className={isDark ? 'form-control--dark' : ''}
@@ -36,6 +54,7 @@ function AddVideos() {
 
         <InputGroupAddon addonType="append">
           <Button
+            disabled={isAdderBusy}
             onClick={handleAddMovie}
             color="success"
             type="button"
