@@ -3,7 +3,7 @@ import { Video } from '../interfaces'
 import Resolver from './Resolver'
 
 class YoutubeResolver extends Resolver {
-  getData(): Video {
+  async getData(): Promise<Video> {
     return {
       title: '',
       views: 0,
