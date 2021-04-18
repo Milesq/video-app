@@ -2,15 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
-export interface Video {
-  title: string
-  src: string
-  tileSrc: string
-
-  views?: number
-  likes: number
-  uploadDate: Date
-}
+import { Video } from '../interfaces'
 
 export interface VideosState {
   videos: Video[]
