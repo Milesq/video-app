@@ -32,7 +32,7 @@ export interface DisplayerState {
 }
 
 const initialState: DisplayerState = {
-  mode: DiplayMode.Tiles,
+  mode: DiplayMode.List,
   filterBy: {
     favorite: null,
   },
