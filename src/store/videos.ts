@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
 export interface Video {
   title: string
@@ -24,7 +26,10 @@ export const slice = createSlice({
   reducers: {},
 })
 
-export const {
-  reducer,
-  actions: {},
-} = slice
+export const reducer = persistReducer(
+  {
+    key: 'videos',
+    storage,
+  },
+  slice.reducer
+)
