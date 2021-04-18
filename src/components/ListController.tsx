@@ -3,6 +3,7 @@ import React from 'react'
 import SortByDate from './ListController/SortByDate'
 import FavoritesOnly from './ListController/FavoritesOnly'
 import TileListView from './ListController/TileListView'
+import RemoveAll from './ListController/RemoveAll'
 
 function Controller() {
   return (
@@ -10,6 +11,7 @@ function Controller() {
       <SortByDate />
       <FavoritesOnly />
       <TileListView />
+      <RemoveAll />
     </div>
   )
 }

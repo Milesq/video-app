@@ -4,7 +4,7 @@
   will-change: color;
 
   &:hover {
-    color: #dc3545;
+    color: var(--danger);
   }
 }
 

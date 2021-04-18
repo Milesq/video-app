@@ -25,7 +25,11 @@ const addVideo = createAsyncThunk('videos/addVideo', async (url: string) => {
 export const slice = createSlice({
   name: 'videos',
   initialState,
-  reducers: {},
+  reducers: {
+    clearAll(state) {
+      state.videos = []
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(addVideo.pending, state => {
@@ -50,6 +54,8 @@ export const slice = createSlice({
 })
 
 export { addVideo }
+
+export const { clearAll } = slice.actions
 
 export const reducer = persistReducer(
   {

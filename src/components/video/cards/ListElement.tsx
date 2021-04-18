@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, useEffect, useState } from 'react'
 import { Col, ListGroupItem } from 'reactstrap'
 
-import Styles from '../../../sass/modules/VideoCars.module.scss'
+import Styles from '../../../sass/modules/icons.module.scss'
 import { useSelector } from '../../../store'
 import { DeleteIcon, HearthIcon } from '../../../svg'
 import { format } from '../../../utils'
