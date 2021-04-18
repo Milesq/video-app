@@ -5,5 +5,5 @@ export default interface Video {
 
   views?: number
   likes: number
-  uploadDate: Date
+  uploadDate: number
 }

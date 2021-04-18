@@ -28,6 +28,8 @@ export const slice = createSlice({
   },
 })
 
+export { addVideo }
+
 export const reducer = persistReducer(
   {
     key: 'videos',

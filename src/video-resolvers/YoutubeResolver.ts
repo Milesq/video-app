@@ -10,7 +10,7 @@ class YoutubeResolver extends Resolver {
       likes: 0,
       src: '',
       tileSrc: '',
-      uploadDate: new Date(),
+      uploadDate: new Date().getTime(),
     }
   }
 }

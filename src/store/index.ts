@@ -15,12 +15,14 @@ import {
 
 import * as theme from './theme'
 import * as videoDisplayer from './videoDisplayer'
+import * as videos from './videos'
 
 export const getStore = () =>
   configureStore({
     reducer: {
       theme: theme.reducer,
       videoDisplayer: videoDisplayer.reducer,
+      videos: videos.reducer,
     },
     middleware: getDefaultMiddleware({
       serializableCheck: {
@@ -35,7 +37,7 @@ export type RootState = ReturnType<AppStore['getState']>
 
 export const useSelector: TypedUseSelectorHook<RootState> = useGenericSelector
 
-export { theme, videoDisplayer }
+export { theme, videoDisplayer, videos }
 
 export default () => {
   const storeInstance = getStore()
