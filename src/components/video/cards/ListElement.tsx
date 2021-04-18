@@ -4,7 +4,7 @@ import { Col, ListGroupItem } from 'reactstrap'
 import Styles from '../../../sass/modules/VideoCars.module.scss'
 import { useSelector } from '../../../store'
 import { DeleteIcon, HearthIcon } from '../../../svg'
-import { formatDate } from '../../../utils'
+import { format } from '../../../utils'
 import { VideoElementProps } from '../VideoCard'
 import VideoStats from '../VideoStats'
 
@@ -24,7 +24,7 @@ function VideoListElement({
     onLike?.(isLiked)
   }, [isLiked])
 
-  const formattedUploadDate = formatDate(uploadDate)
+  const formattedUploadDate = format.date(uploadDate)
 
   return (
     <Col xs="12">
@@ -38,8 +38,8 @@ function VideoListElement({
           <div className="text-secondary d-flex align-items-center w-100">
             <VideoStats
               date={formattedUploadDate}
-              likes={likes.toString()}
-              views={views?.toString() || '-'}
+              likes={format.number(likes)}
+              views={format.number(views || 0)}
             />
           </div>
 

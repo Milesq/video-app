@@ -11,7 +11,7 @@ import {
 import Styles from '../../../sass/modules/VideoCars.module.scss'
 import { useSelector } from '../../../store'
 import { DeleteIcon, HearthIcon } from '../../../svg'
-import { formatDate } from '../../../utils'
+import { format } from '../../../utils'
 import { VideoElementProps } from '../VideoCard'
 import VideoStats from '../VideoStats'
 
@@ -32,7 +32,7 @@ function VideoListElement({
     onLike?.(isLiked)
   }, [isLiked])
 
-  const formattedUploadDate = formatDate(uploadDate)
+  const formattedUploadDate = format.date(uploadDate)
 
   return (
     <Col lg="4" md="6" className={className}>
@@ -48,8 +48,8 @@ function VideoListElement({
           <CardSubtitle tag="h6" className="mb-2 text-muted">
             <VideoStats
               date={formattedUploadDate}
-              likes={likes.toString()}
-              views={views?.toString() || '-'}
+              likes={format.number(likes)}
+              views={format.number(views || 0)}
             />
           </CardSubtitle>
 
