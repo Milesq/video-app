@@ -11,17 +11,17 @@ function ListVideos() {
     ({ videoDisplayer }) => videoDisplayer.mode
   )
   const isListMode = currentDisplayMode === DiplayMode.List
+  const videos = useSelector(({ videos }) => videos.videos)
 
   return (
     <Container fluid>
       <Row>
-        {new Array(7).fill(0).map((_, i) => (
+        {videos.map(video => (
           <VideoCard
+            key={video.id}
+            video={video}
             style={isListMode ? 'list' : 'tile'}
-            isFavorite={true}
-            title="Lorem Ipsum"
             className="my-3"
-            key={i}
           />
         ))}
       </Row>

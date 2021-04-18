@@ -8,6 +8,7 @@ class YoutubeResolver extends Resolver {
     const {
       items: [
         {
+          id,
           snippet: { publishedAt, title, thumbnails },
           statistics: { likeCount, viewCount },
           player: { embedHtml },
@@ -16,6 +17,7 @@ class YoutubeResolver extends Resolver {
     } = await getYoutubeVideo(this.url)
 
     return {
+      id,
       title,
       src: thumbnails.standard.url,
       embedHtml,

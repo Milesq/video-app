@@ -4,6 +4,7 @@ const API = 'https://youtube.googleapis.com/youtube/v3/videos'
 
 export interface YTResponse {
   items: {
+    id: string
     snippet: {
       publishedAt: string
       title: string

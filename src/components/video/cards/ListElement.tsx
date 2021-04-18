@@ -4,23 +4,27 @@ import { Col, ListGroupItem } from 'reactstrap'
 import Styles from '../../../sass/modules/VideoCars.module.scss'
 import { useSelector } from '../../../store'
 import { DeleteIcon, HearthIcon } from '../../../svg'
+import { formatDate } from '../../../utils'
 import { VideoElementProps } from '../VideoCard'
 import VideoStats from '../VideoStats'
 
 function VideoListElement({
-  title,
   onDelete,
   onLike,
-  isFavorite,
+  video,
 }: PropsWithChildren<VideoElementProps>) {
   const choosenTheme = useSelector(state => state.theme.theme)
   const isDark = choosenTheme === 'dark'
+
+  const { title, likes, views, isFavorite, uploadDate } = video
 
   const [isLiked, setIsLiked] = useState(isFavorite as boolean)
 
   useEffect(() => {
     onLike?.(isLiked)
   }, [isLiked])
+
+  const formattedUploadDate = formatDate(uploadDate)
 
   return (
     <Col xs="12">
@@ -32,7 +36,11 @@ function VideoListElement({
         <div>{title}</div>
         <div className="d-flex justify-content-around w-50" style={{ gap: 20 }}>
           <div className="text-secondary d-flex align-items-center w-100">
-            <VideoStats date="16.04.2021" likes="12" views="120" />
+            <VideoStats
+              date={formattedUploadDate}
+              likes={likes.toString()}
+              views={views?.toString() || '-'}
+            />
           </div>
 
           <HearthIcon

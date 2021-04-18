@@ -1,5 +1,7 @@
 import React, { PropsWithChildren } from 'react'
 
+import { Video } from '../../interfaces'
+
 import Tile from './cards/Tile'
 import ListElement from './cards/ListElement'
 
@@ -11,8 +13,7 @@ const styles = {
 export interface VideoElementProps {
   className?: string
 
-  title: string
-  isFavorite?: boolean
+  video: Video
   // eslint-disable-next-line
   onLike?: (isLiked: boolean) => void
   onDelete?: () => void

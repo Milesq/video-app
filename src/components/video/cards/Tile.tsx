@@ -11,24 +11,28 @@ import {
 import Styles from '../../../sass/modules/VideoCars.module.scss'
 import { useSelector } from '../../../store'
 import { DeleteIcon, HearthIcon } from '../../../svg'
+import { formatDate } from '../../../utils'
 import { VideoElementProps } from '../VideoCard'
 import VideoStats from '../VideoStats'
 
 function VideoListElement({
   className,
-  title,
   onDelete,
   onLike,
-  isFavorite,
+  video,
 }: PropsWithChildren<VideoElementProps>) {
   const choosenTheme = useSelector(state => state.theme.theme)
   const isDark = choosenTheme === 'dark'
+
+  const { title, likes, views, isFavorite, uploadDate, src } = video
 
   const [isLiked, setIsLiked] = useState(isFavorite as boolean)
 
   useEffect(() => {
     onLike?.(isLiked)
   }, [isLiked])
+
+  const formattedUploadDate = formatDate(uploadDate)
 
   return (
     <Col lg="4" md="6" className={className}>
@@ -38,15 +42,15 @@ function VideoListElement({
           isDark ? { backgroundColor: '#33383f', borderColor: '#33383f' } : {}
         }
       >
-        <CardImg
-          width="100%"
-          src="https://placeimg.com/318/180/animals"
-          alt="Card image cap"
-        />
+        <CardImg width="100%" src={src} alt={title} />
         <CardBody>
           <CardTitle tag="h5">{title}</CardTitle>
           <CardSubtitle tag="h6" className="mb-2 text-muted">
-            <VideoStats date="16.04.2021" likes="12" views="120" />
+            <VideoStats
+              date={formattedUploadDate}
+              likes={likes.toString()}
+              views={views?.toString() || '-'}
+            />
           </CardSubtitle>
 
           <div className="d-flex justify-content-around mt-4 text-black-50">
