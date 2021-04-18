@@ -13,6 +13,7 @@ export interface VideoElementProps {
 
   title: string
   isFavorite?: boolean
+  // eslint-disable-next-line
   onLike?: (isLiked: boolean) => void
   onDelete?: () => void
 }
