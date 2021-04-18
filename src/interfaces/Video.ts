@@ -1,7 +1,7 @@
 export default interface Video {
   title: string
   src: string
-  tileSrc: string
+  embedHtml: string
 
   views?: number
   likes: number
