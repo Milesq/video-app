@@ -1,9 +1,9 @@
 import { Video } from '../interfaces'
 
-import YoutubeResolver from './YoutubeResolver'
+import VimeoResolver from './VimeoResolver'
 
 function resolve(url: string): Promise<Video> {
-  return new YoutubeResolver(url).getData()
+  return new VimeoResolver(url).getData()
 }
 
 export default resolve

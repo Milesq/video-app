@@ -2,20 +2,21 @@ import { VideoError } from '../errors'
 
 const API = 'https://api.vimeo.com/videos/'
 
+export interface Picture {
+  width: number
+  link: string
+}
+
 export interface VimeoResponse {
   error?: string
   name: string
   likes: string
-  link: string
   embed: {
     html: string
   }
   created_time: string
   pictures: {
-    sizes: {
-      width: number
-      link: string
-    }[]
+    sizes: Picture[]
   }
 }
 
@@ -28,7 +29,7 @@ const fetchSingedReq = (url: string) =>
 
 async function getVimeoVideo(id: string): Promise<VimeoResponse> {
   const url = new URL(`${API}/${id}`)
-  url.searchParams.set('fields', 'embed,name,link,created_time,pictures')
+  url.searchParams.set('fields', 'embed,name,created_time,pictures')
 
   const resp: VimeoResponse = await fetchSingedReq(url.href)
 
@@ -37,7 +38,7 @@ async function getVimeoVideo(id: string): Promise<VimeoResponse> {
   }
 
   const { total: likesCount } = await fetchSingedReq(
-    `${API}/${id}/likes?fields=total`
+    `${API}/${id} /likes?fields=total`
   )
 
   return {
