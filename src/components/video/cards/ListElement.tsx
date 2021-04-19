@@ -1,10 +1,10 @@
-import React, { PropsWithChildren, useEffect, useState } from 'react'
+import React, { PropsWithChildren, useState } from 'react'
 import { Col, ListGroupItem } from 'reactstrap'
 
 import Styles from '../../../sass/modules/icons.module.scss'
 import { useSelector } from '../../../store'
 import { DeleteIcon, HearthIcon } from '../../../svg'
-import { format } from '../../../utils'
+import { format, useDidChanged } from '../../../utils'
 import { VideoElementProps } from '../VideoCard'
 import VideoStats from '../VideoStats'
 
@@ -20,7 +20,7 @@ function VideoListElement({
 
   const [isLiked, setIsLiked] = useState(isFavorite as boolean)
 
-  useEffect(() => {
+  useDidChanged(() => {
     onLike?.(isLiked)
   }, [isLiked])
 
