@@ -3,20 +3,24 @@ import { useDispatch } from 'react-redux'
 import { Container, Row } from 'reactstrap'
 
 import { useSelector, videos } from '../../store'
-import { DiplayMode } from '../../store/videoDisplayer'
+import { DiplayMode, SortKey } from '../../store/videoDisplayer'
+import { compareFunctions } from '../../utils'
 
 import VideoCard from './VideoCard'
 
 function ListVideos() {
   const dispatch = useDispatch()
   let currentVideos = useSelector(({ videos }) => videos.videos)
+
   const currentDisplayMode = useSelector(
     ({ videoDisplayer }) => videoDisplayer.mode
   )
   const isListMode = currentDisplayMode === DiplayMode.List
-
   const isFavoriteOnlyMode = useSelector(
     ({ videoDisplayer }) => videoDisplayer.filterBy.favorite
+  )
+  const sortSettings = useSelector(
+    ({ videoDisplayer }) => videoDisplayer.sortBy
   )
 
   const deleteMovie = (id: string) => {
@@ -30,6 +34,18 @@ function ListVideos() {
   if (isFavoriteOnlyMode) {
     currentVideos = currentVideos.filter(({ isFavorite }) => isFavorite)
   }
+
+  if (sortSettings.key !== null) {
+    const cmpFn = compareFunctions[sortSettings.order]
+
+    currentVideos = [...currentVideos].sort((a, b) => {
+      return cmpFn(
+        a[sortSettings.key as SortKey] || 0,
+        b[sortSettings.key as SortKey] || 0
+      )
+    })
+  }
+  console.log(currentVideos[0], sortSettings)
 
   return (
     <Container fluid>
