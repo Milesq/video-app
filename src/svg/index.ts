@@ -9,6 +9,7 @@ export { ReactComponent as CalendarIcon } from './calendar.svg'
 
 export { ReactComponent as DeleteIcon } from './delete.svg'
 
+export { ReactComponent as ClearFilterIcon } from './clear-filter.svg'
 export { ReactComponent as ArrowDownIcon } from './arrow-down.svg'
 export { ReactComponent as ArrowUpIcon } from './arrow-up.svg'
 
