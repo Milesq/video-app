@@ -15,7 +15,13 @@ function UploadDemo({ videos: demoVideos }: UploadDemoProps) {
     dispatch(videos.addVideo(demoVideos))
   }
 
-  return <DemoIcon onClick={uploadDemo} width="42" className="cursor-pointer" />
+  return (
+    <DemoIcon
+      onClick={uploadDemo}
+      width="42"
+      className="cursor-pointer text-secondary"
+    />
+  )
 }
 
 export default UploadDemo
