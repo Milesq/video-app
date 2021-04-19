@@ -1,3 +1,4 @@
+export { default as useDidChanged } from './useDidChanged'
 export { default as ThemeContext } from './theme'
 export { default as calculateCenterClasses } from './calculateCenterClasses'
 export * as format from './format'
