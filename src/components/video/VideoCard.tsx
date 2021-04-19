@@ -14,7 +14,6 @@ export interface VideoElementProps {
   className?: string
 
   video: Video
-  // eslint-disable-next-line
   onLike?: (isLiked: boolean) => void
   onDelete?: () => void
 }

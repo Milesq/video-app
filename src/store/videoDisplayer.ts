@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { Order } from '../utils'
 
-/* eslint-disable no-unused-vars */
 export enum DiplayMode {
   List,
   Tiles,
@@ -13,8 +12,6 @@ export enum SortKey {
   Likes = 'like',
   Views = 'view',
 }
-
-/* eslint-enable */
 
 export interface SortBy {
   key: SortKey | null
