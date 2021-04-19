@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
@@ -34,6 +34,17 @@ export const slice = createSlice({
     clearAll(state) {
       state.videos = []
     },
+    switchLike(state, { payload }: PayloadAction<{ id: string }>) {
+      const idxToLike = state.videos.findIndex(({ id }) => id === payload.id)
+      const videoToLike = state.videos[idxToLike]
+
+      videoToLike.isFavorite = !videoToLike.isFavorite
+    },
+    remove(state, { payload }: PayloadAction<{ id: string }>) {
+      const idxToRemove = state.videos.findIndex(({ id }) => id === payload.id)
+
+      state.videos.splice(idxToRemove, 1)
+    },
   },
   extraReducers: builder => {
     builder
@@ -60,7 +71,7 @@ export const slice = createSlice({
 
 export { addVideo }
 
-export const { clearAll } = slice.actions
+export const { clearAll, switchLike, remove } = slice.actions
 
 export const reducer = persistReducer(
   {
