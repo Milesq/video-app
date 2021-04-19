@@ -16,8 +16,6 @@ function AddVideos() {
   const videoError = useSelector(({ videos }) => videos.error)
   const isAdderBusy = useSelector(({ videos }) => videos.pending)
 
-  console.log(isAdderBusy)
-
   const isDark = choosenTheme === 'dark'
   const newMovieHandler: InputProps['innerRef'] = useRef(null)
 
