@@ -11,6 +11,11 @@ class VimeoResolver extends Resolver {
     return goodQualityPicture || lastPicture
   }
 
+  checkId(): boolean {
+    console.log(this.id)
+    return true
+  }
+
   async getData(): Promise<Video> {
     const {
       created_time,
@@ -18,10 +23,10 @@ class VimeoResolver extends Resolver {
       likes,
       name,
       pictures: { sizes: pictures },
-    } = await getVimeoVideo(this.url)
+    } = await getVimeoVideo(this.id)
 
     return {
-      id: this.url,
+      id: this.id,
       title: name,
       src: this.getPicture(pictures).link,
       embedHtml,
