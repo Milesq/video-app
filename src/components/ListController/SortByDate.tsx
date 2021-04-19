@@ -2,12 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 
 import { useSelector, videoDisplayer } from '../../store'
-import {
-  CalendarIcon,
-  ArrowUpIcon,
-  ArrowDownIcon,
-  ClearFilterIcon,
-} from '../../svg'
+import { SortCalendarAsc, SortCalendarDesc, ClearFilterIcon } from '../../svg'
 import { Order } from '../../utils'
 
 function SortByDate() {
@@ -15,9 +10,6 @@ function SortByDate() {
   const { key: sortKey, order: sortOrder } = useSelector(
     state => state.videoDisplayer.sortBy
   )
-
-  const MatchingArrowIcon =
-    sortOrder === Order.Asc ? ArrowUpIcon : ArrowDownIcon
 
   const changeDateSortingOrder = () => {
     const order = sortOrder === Order.Asc ? Order.Desc : Order.Asc
@@ -38,11 +30,13 @@ function SortByDate() {
     )
   }
 
+  const MatchingSortDirectionIcon =
+    sortOrder === Order.Asc ? SortCalendarAsc : SortCalendarDesc
+
   return (
     <div className="text-secondary cursor-pointer">
       {sortKey && <ClearFilterIcon width="32" onClick={clearSortSettings} />}
-      <CalendarIcon width="32" onClick={changeDateSortingOrder} />
-      <MatchingArrowIcon width="20" />
+      <MatchingSortDirectionIcon width="35" onClick={changeDateSortingOrder} />
     </div>
   )
 }
