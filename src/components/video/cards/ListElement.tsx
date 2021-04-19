@@ -29,12 +29,15 @@ function VideoListElement({
   return (
     <Col xs="12">
       <ListGroupItem
-        className={`d-flex justify-content-between align-items-center ${
+        className={`d-flex justify-content-between flex-column flex-md-row align-items-center ${
           isDark && 'bg-dark text-white'
         }`}
       >
-        <div>{title}</div>
-        <div className="d-flex justify-content-around w-50" style={{ gap: 20 }}>
+        <div className="mb-3 mb-sm-0">{title}</div>
+        <div
+          className="d-flex justify-content-around flex-wrap flex-md-nowrap w-50"
+          style={{ gap: 20 }}
+        >
           <div className="text-secondary d-flex align-items-center w-100">
             <VideoStats
               date={formattedUploadDate}

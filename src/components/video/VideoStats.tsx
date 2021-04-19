@@ -22,7 +22,7 @@ function VideoStats({ likes, views, date }: VideoStatsProps) {
 
   return (
     <div
-      className={`d-flex justify-content-around w-100 ${
+      className={`d-flex justify-content-around flex-wrap w-100 ${
         isDark && 'text-white-50'
       }`}
     >

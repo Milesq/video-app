@@ -15,6 +15,12 @@ $sizes: 25, 50, 75, 100;
   }
 }
 
+.hide-text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }

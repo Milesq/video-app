@@ -44,7 +44,9 @@ function VideoListElement({
       >
         <CardImg width="100%" src={src} alt={title} />
         <CardBody>
-          <CardTitle tag="h5">{title}</CardTitle>
+          <CardTitle tag="h5" className="hide-text-ellipsis">
+            {title}
+          </CardTitle>
           <CardSubtitle tag="h6" className="mb-2 text-muted">
             <VideoStats
               date={formattedUploadDate}
