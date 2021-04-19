@@ -24,6 +24,9 @@ function ListVideos() {
             className="my-3"
           />
         ))}
+        {!videos.length && (
+          <h2 className="w-100 text-center h4">Brak zapisanych filmów</h2>
+        )}
       </Row>
     </Container>
   )
