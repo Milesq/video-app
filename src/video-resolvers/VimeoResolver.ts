@@ -12,8 +12,7 @@ class VimeoResolver extends Resolver {
   }
 
   checkId(): boolean {
-    console.log(this.id)
-    return true
+    return /^[0-9]$/.test(this.id)
   }
 
   async getData(): Promise<Video> {

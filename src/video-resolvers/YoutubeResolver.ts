@@ -5,7 +5,6 @@ import Resolver from './Resolver'
 
 class YoutubeResolver extends Resolver {
   checkId(): boolean {
-    console.log(this.id)
     return true
   }
 
