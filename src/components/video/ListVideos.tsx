@@ -9,11 +9,15 @@ import VideoCard from './VideoCard'
 
 function ListVideos() {
   const dispatch = useDispatch()
+  let currentVideos = useSelector(({ videos }) => videos.videos)
   const currentDisplayMode = useSelector(
     ({ videoDisplayer }) => videoDisplayer.mode
   )
   const isListMode = currentDisplayMode === DiplayMode.List
-  const currentVideos = useSelector(({ videos }) => videos.videos)
+
+  const isFavoriteOnlyMode = useSelector(
+    ({ videoDisplayer }) => videoDisplayer.filterBy.favorite
+  )
 
   const deleteMovie = (id: string) => {
     dispatch(videos.remove({ id }))
@@ -21,6 +25,10 @@ function ListVideos() {
 
   const swicthMovieLike = (id: string) => {
     dispatch(videos.switchLike({ id }))
+  }
+
+  if (isFavoriteOnlyMode) {
+    currentVideos = currentVideos.filter(({ isFavorite }) => isFavorite)
   }
 
   return (
