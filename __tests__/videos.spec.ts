@@ -6,6 +6,7 @@ const mockedVideo = Symbol()
 jest.mock('../src/video-resolvers/resolve.ts', () => () => mockedVideo)
 
 import { videos } from '../src/store'
+import demoVideos from '../src/utils/demoVideos'
 
 const mockStore = configureMockStore([thunk])
 
@@ -24,5 +25,19 @@ describe('videos', () => {
 
     expect(lastAction.type).toBe(videos.addVideo.fulfilled.toString())
     expect(lastAction.payload[0]).toBe(mockedVideo)
+  })
+
+  it('clear list', async () => {
+    const state = {
+      videos: {
+        videos: demoVideos(),
+        error: null,
+        pending: false,
+      },
+    }
+
+    const newState = videos.reducer(state as any, videos.clearAll())
+
+    expect(newState.videos.length).toBe(0)
   })
 })
