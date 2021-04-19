@@ -26,6 +26,10 @@ or
 npm i
 ```
 
+## Env Variables
+
+Copy content of `.env.example` to new file `.env`. Now you have to create two apps ([YouTube](https://developers.google.com/youtube/v3/getting-started) and [Vimeo](https://developer.vimeo.com/api/guides/start)) and put keys to `.env`.
+
 ## Start app
 
 Run
