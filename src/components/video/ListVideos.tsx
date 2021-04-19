@@ -19,16 +19,16 @@ function ListVideos() {
     ({ videoDisplayer }) => videoDisplayer.filterBy.favorite
   )
 
-  if (isFavoriteOnlyMode) {
-    currentVideos = currentVideos.filter(({ isFavorite }) => isFavorite)
-  }
-
   const deleteMovie = (id: string) => {
     dispatch(videos.remove({ id }))
   }
 
   const swicthMovieLike = (id: string) => {
     dispatch(videos.switchLike({ id }))
+  }
+
+  if (isFavoriteOnlyMode) {
+    currentVideos = currentVideos.filter(({ isFavorite }) => isFavorite)
   }
 
   return (
