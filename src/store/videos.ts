@@ -18,9 +18,14 @@ const initialState: VideosState = {
   pending: false,
 }
 
-const addVideo = createAsyncThunk('videos/addVideo', async (url: string) => {
-  return await resolve(url)
-})
+const addVideo = createAsyncThunk(
+  'videos/addVideo',
+  (url: string | string[]) => {
+    const idsArray = typeof url === 'string' ? [url] : url
+
+    return Promise.all(idsArray.map(resolve))
+  }
+)
 
 export const slice = createSlice({
   name: 'videos',
@@ -39,7 +44,7 @@ export const slice = createSlice({
         state.pending = false
         state.error = null
 
-        state.videos.push(payload)
+        state.videos.push(...payload)
       })
       .addCase(addVideo.rejected, (state, { error }) => {
         state.pending = false
