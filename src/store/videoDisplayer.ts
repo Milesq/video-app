@@ -1,4 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
 import { Order } from '../utils'
 
@@ -61,7 +63,13 @@ export const slice = createSlice({
   },
 })
 
-export const {
-  reducer,
-  actions: { changeDisplayMode, setFilter, setSortKey },
-} = slice
+export const { changeDisplayMode, setFilter, setSortKey } = slice.actions
+
+export const reducer = persistReducer(
+  {
+    key: 'videoDisplayer',
+    storage,
+    whitelist: ['mode'],
+  },
+  slice.reducer
+)
