@@ -10,9 +10,9 @@ export enum DiplayMode {
 }
 
 export enum SortKey {
-  Date = 'date',
-  Likes = 'like',
-  Views = 'view',
+  Date = 'uploadDate',
+  Likes = 'likes',
+  Views = 'views',
 }
 
 export interface SortBy {
