@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import Styles from '../../sass/modules/icons.module.scss'
-import { DeleteIcon, HearthIcon } from '../../svg'
+import { DeleteIcon, HearthIcon, PlayIcon } from '../../svg'
 import { useDidChanged } from '../../utils'
 
 import { VideoElementProps } from './VideoCard'
@@ -15,6 +15,10 @@ function VideoAction({ video, onDelete, onLike }: VideoElementProps) {
 
   return (
     <>
+      <a href={video.src}>
+        <PlayIcon width="32" className={Styles.play} />
+      </a>
+
       <HearthIcon
         width="32"
         onClick={() => setIsLiked(!isLiked)}

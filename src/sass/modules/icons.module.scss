@@ -8,6 +8,15 @@
   }
 }
 
+.play {
+  transition: .2s ease transform;
+  color: var(--primary);
+
+  &:hover {
+    transform: scale(1.15);
+  }
+}
+
 .heart:hover {
   animation: heartbeat 1s;
 }
