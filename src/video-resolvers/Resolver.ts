@@ -1,14 +1,21 @@
+import memoize from 'lodash.memoize'
+
 import { VideoError } from '../errors'
 import { Video } from '../interfaces'
 
 abstract class Resolver {
   protected id: string
 
+  abstract checkId(): boolean
+  abstract getData(): Promise<Video>
+
   constructor(url: string) {
     this.id = this.transformUrl(url)
   }
 
-  transformUrl(urlOrId: string): string {
+  transformUrl = memoize(this.internalTransformUrl)
+
+  private internalTransformUrl(urlOrId: string): string {
     const coveredHostnames = ['youtu.be', 'vimeo.com']
 
     try {
@@ -33,9 +40,6 @@ abstract class Resolver {
       else throw err
     }
   }
-
-  abstract checkId(): boolean
-  abstract getData(): Promise<Video>
 }
 
 export default Resolver
