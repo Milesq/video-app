@@ -6,6 +6,8 @@ import { VideoError } from '../errors'
 import { Video } from '../interfaces'
 import { resolve } from '../video-resolvers'
 
+import { RootState } from '.'
+
 export interface VideosState {
   videos: Video[]
   error: VideoError | null
@@ -18,12 +20,25 @@ const initialState: VideosState = {
   pending: false,
 }
 
+function videoDoesntExists(id: string, videos: Video[]) {
+  const videoIds = videos.map(video => video.id)
+  const duplicationExists = videoIds.some(videoId => id.includes(videoId))
+
+  return !duplicationExists
+}
+
 const addVideo = createAsyncThunk(
   'videos/addVideo',
-  (url: string | string[]) => {
+  (url: string | string[], { getState }) => {
     const idsArray = typeof url === 'string' ? [url] : url
+    const {
+      videos: { videos },
+    } = getState() as RootState
+    const distinctedVideos = idsArray.filter(id =>
+      videoDoesntExists(id, videos)
+    )
 
-    return Promise.all(idsArray.map(resolve))
+    return Promise.all(distinctedVideos.map(resolve))
   }
 )
 
