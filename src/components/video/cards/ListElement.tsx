@@ -38,7 +38,7 @@ function VideoListElement({
           }`}
         >
           <div
-            className="mb-3 mb-sm-0"
+            className="mb-3 mb-sm-0 cursor-pointer"
             onClick={() => videoPlayer.current?.open()}
           >
             {title}

@@ -51,12 +51,12 @@ function VideoListElement({
             src={src}
             alt={title}
             onClick={() => videoPlayer.current?.open()}
-            className="cursos-pointer"
+            className="cursor-pointer"
           />
           <CardBody>
             <CardTitle
               tag="h5"
-              className="hide-text-ellipsis"
+              className="hide-text-ellipsis cursor-pointer"
               onClick={() => videoPlayer.current?.open()}
             >
               {title}
