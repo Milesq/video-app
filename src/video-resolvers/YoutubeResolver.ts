@@ -23,7 +23,7 @@ class YoutubeResolver extends Resolver {
     return {
       id,
       title,
-      src: thumbnails.standard.url,
+      src: thumbnails.high.url,
       embedHtml,
 
       views: parseInt(viewCount),

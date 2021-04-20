@@ -9,7 +9,7 @@ export interface YTResponse {
       publishedAt: string
       title: string
       thumbnails: {
-        standard: {
+        high: {
           url: string
         }
       }
