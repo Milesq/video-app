@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useState } from 'react'
+import React, { PropsWithChildren, useRef, useState } from 'react'
 import {
   Card,
   CardImg,
@@ -12,6 +12,7 @@ import Styles from '../../../sass/modules/icons.module.scss'
 import { useSelector } from '../../../store'
 import { DeleteIcon, HearthIcon } from '../../../svg'
 import { format, useDidChanged } from '../../../utils'
+import VideoPlayer, { VideoPlayerHandler } from '../../VideoPlayer'
 import { VideoElementProps } from '../VideoCard'
 import VideoStats from '../VideoStats'
 
@@ -24,7 +25,7 @@ function VideoListElement({
   const choosenTheme = useSelector(state => state.theme.theme)
   const isDark = choosenTheme === 'dark'
 
-  const { title, likes, views, isFavorite, uploadDate, src } = video
+  const { title, likes, views, isFavorite, uploadDate, src, embedHtml } = video
 
   const [isLiked, setIsLiked] = useState(isFavorite as boolean)
 
@@ -33,49 +34,63 @@ function VideoListElement({
   }, [isLiked])
 
   const formattedUploadDate = format.date(uploadDate)
+  const videoPlayer = useRef<VideoPlayerHandler>(null)
 
   return (
-    <Col lg="4" md="6" className={className}>
-      <Card
-        inverse={isDark}
-        style={
-          isDark ? { backgroundColor: '#33383f', borderColor: '#33383f' } : {}
-        }
-      >
-        <CardImg width="100%" src={src} alt={title} />
-        <CardBody>
-          <CardTitle tag="h5" className="hide-text-ellipsis">
-            {title}
-          </CardTitle>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">
-            <VideoStats
-              date={formattedUploadDate}
-              likes={format.number(likes)}
-              views={format.number(views || -1)}
-            />
-          </CardSubtitle>
+    <>
+      <VideoPlayer ref={videoPlayer} embedHtml={embedHtml} title={title} />
+      <Col lg="4" md="6" className={className}>
+        <Card
+          inverse={isDark}
+          style={
+            isDark ? { backgroundColor: '#33383f', borderColor: '#33383f' } : {}
+          }
+        >
+          <CardImg
+            width="100%"
+            src={src}
+            alt={title}
+            onClick={() => videoPlayer.current?.open()}
+            className="cursor-pointer"
+          />
+          <CardBody>
+            <CardTitle
+              tag="h5"
+              className="hide-text-ellipsis cursor-pointer"
+              onClick={() => videoPlayer.current?.open()}
+            >
+              {title}
+            </CardTitle>
+            <CardSubtitle tag="h6" className="mb-2 text-muted">
+              <VideoStats
+                date={formattedUploadDate}
+                likes={format.number(likes)}
+                views={format.number(views || -1)}
+              />
+            </CardSubtitle>
 
-          <div className="d-flex justify-content-around mt-4 text-black-50">
-            <HearthIcon
-              width="32"
-              onClick={() => setIsLiked(!isLiked)}
-              stroke="var(--insta-red)"
-              className={`cursor-pointer ${
-                isFavorite
-                  ? 'text-insta-red'
-                  : `${Styles.heart} text-transparent`
-              }`}
-            />
+            <div className="d-flex justify-content-around mt-4 text-black-50">
+              <HearthIcon
+                width="32"
+                onClick={() => setIsLiked(!isLiked)}
+                stroke="var(--insta-red)"
+                className={`cursor-pointer ${
+                  isFavorite
+                    ? 'text-insta-red'
+                    : `${Styles.heart} text-transparent`
+                }`}
+              />
 
-            <DeleteIcon
-              onClick={() => onDelete?.()}
-              className={`${Styles.delete} cursor-pointer`}
-              width="32"
-            />
-          </div>
-        </CardBody>
-      </Card>
-    </Col>
+              <DeleteIcon
+                onClick={() => onDelete?.()}
+                className={`${Styles.delete} cursor-pointer`}
+                width="32"
+              />
+            </div>
+          </CardBody>
+        </Card>
+      </Col>
+    </>
   )
 }
 
