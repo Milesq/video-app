@@ -29,7 +29,7 @@ function VideoStats({ likes, views, date }: VideoStatsProps) {
       {data.map(([name, value]) => (
         <Center key={name} y>
           {icons[name as IconType]}
-          <span className="ml-1">{value}</span>
+          <span className="ml-1">{value === '-1' ? '-' : value}</span>
         </Center>
       ))}
     </div>

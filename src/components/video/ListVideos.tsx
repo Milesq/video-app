@@ -45,7 +45,6 @@ function ListVideos() {
       )
     })
   }
-  console.log(currentVideos[0], sortSettings)
 
   return (
     <Container fluid>

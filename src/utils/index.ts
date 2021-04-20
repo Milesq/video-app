@@ -1,6 +1,7 @@
 export { default as useDidChanged } from './useDidChanged'
 export { default as ThemeContext } from './theme'
 export { default as calculateCenterClasses } from './calculateCenterClasses'
+export { default as findMapAsync } from './findMapAsync'
 export * as format from './format'
 export type { CenterProps } from './calculateCenterClasses'
 export { Order, compareFunctions } from './order'

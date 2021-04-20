@@ -4,6 +4,10 @@ import { Video } from '../interfaces'
 import Resolver from './Resolver'
 
 class YoutubeResolver extends Resolver {
+  checkId(): boolean {
+    return true
+  }
+
   async getData(): Promise<Video> {
     const {
       items: [
@@ -14,12 +18,12 @@ class YoutubeResolver extends Resolver {
           player: { embedHtml },
         },
       ],
-    } = await getYoutubeVideo(this.url)
+    } = await getYoutubeVideo(this.id)
 
     return {
       id,
       title,
-      src: thumbnails.standard.url,
+      src: thumbnails.high.url,
       embedHtml,
 
       views: parseInt(viewCount),
