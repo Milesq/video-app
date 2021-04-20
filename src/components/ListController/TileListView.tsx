@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { useSelector, videoDisplayer } from '../../store'
 import { DiplayMode } from '../../store/videoDisplayer'
 import { ListIcon, TileIcon } from '../../svg'
+import RoleButton from '../utils/RoleButton'
 
 function TileListView() {
   const dispatch = useDispatch()
@@ -22,11 +23,12 @@ function TileListView() {
   }
 
   return (
-    <AlternativeDisplayIcon
-      onClick={changeDisplayMode}
-      width="32"
-      className="text-secondary cursor-pointer"
-    />
+    <RoleButton action={changeDisplayMode}>
+      <AlternativeDisplayIcon
+        width="32"
+        className="text-secondary cursor-pointer"
+      />
+    </RoleButton>
   )
 }
 

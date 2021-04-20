@@ -5,6 +5,7 @@ import { Navbar as RSNavbar, NavbarBrand } from 'reactstrap'
 import { theme } from '../../store'
 import { ThemeBtnIcon } from '../../svg'
 import { ThemeContext } from '../../utils'
+import RoleButton from '../utils/RoleButton'
 
 function Navbar() {
   const dispatch = useDispatch()
@@ -38,11 +39,9 @@ function Navbar() {
           <h1 className="h4 m-0">Video App</h1>
         </NavbarBrand>
 
-        <ThemeBtnIcon
-          width="32"
-          onClick={changeTheme}
-          className="cursor-pointer"
-        />
+        <RoleButton action={changeTheme}>
+          <ThemeBtnIcon width="32" className="cursor-pointer" />
+        </RoleButton>
       </RSNavbar>
     </header>
   )

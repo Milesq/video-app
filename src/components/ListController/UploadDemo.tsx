@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 
+import RoleButton from '../utils/RoleButton'
 import { videos } from '../../store'
 import { DemoIcon } from '../../svg'
 
@@ -16,11 +17,9 @@ function UploadDemo({ videos: demoVideos }: UploadDemoProps) {
   }
 
   return (
-    <DemoIcon
-      onClick={uploadDemo}
-      width="42"
-      className="cursor-pointer text-secondary"
-    />
+    <RoleButton action={uploadDemo}>
+      <DemoIcon width="42" className="cursor-pointer text-secondary" />
+    </RoleButton>
   )
 }
 

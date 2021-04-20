@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 
+import RoleButton from '../utils/RoleButton'
 import { useSelector, videoDisplayer } from '../../store'
 import { HearthIcon } from '../../svg'
 function FaoritesOnly() {
@@ -18,10 +19,9 @@ function FaoritesOnly() {
   }
 
   return (
-    <div>
+    <RoleButton action={changeFavoriteOnly}>
       <HearthIcon
         width="32"
-        onClick={changeFavoriteOnly}
         stroke="var(--insta-red)"
         className={`cursor-pointer ${
           // prettier-ignore
@@ -30,7 +30,7 @@ function FaoritesOnly() {
             : 'text-transparent'
         }`}
       />
-    </div>
+    </RoleButton>
   )
 }
 

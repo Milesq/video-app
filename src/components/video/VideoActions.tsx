@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Styles from '../../sass/modules/icons.module.scss'
 import { DeleteIcon, HearthIcon, PlayIcon } from '../../svg'
 import { useDidChanged } from '../../utils'
+import RoleButton from '../utils/RoleButton'
 
 import { VideoElementProps } from './VideoCard'
 
@@ -19,22 +20,21 @@ function VideoAction({ video, onDelete, onLike }: VideoElementProps) {
         <PlayIcon width="32" className={Styles.play} />
       </a>
 
-      <HearthIcon
-        width="32"
-        onClick={() => setIsLiked(!isLiked)}
-        stroke="var(--insta-red)"
-        className={`cursor-pointer ${
-          video.isFavorite
-            ? 'text-insta-red'
-            : `${Styles.heart} text-transparent`
-        }`}
-      />
+      <RoleButton action={() => setIsLiked(!isLiked)}>
+        <HearthIcon
+          width="32"
+          stroke="var(--insta-red)"
+          className={`cursor-pointer ${
+            video.isFavorite
+              ? 'text-insta-red'
+              : `${Styles.heart} text-transparent`
+          }`}
+        />
+      </RoleButton>
 
-      <DeleteIcon
-        onClick={() => onDelete?.()}
-        className={`${Styles.delete} cursor-pointer`}
-        width="32"
-      />
+      <RoleButton action={() => onDelete?.()}>
+        <DeleteIcon className={`${Styles.delete} cursor-pointer`} width="32" />
+      </RoleButton>
     </>
   )
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 
+import RoleButton from '../utils/RoleButton'
 import { useSelector, videoDisplayer } from '../../store'
 import { SortCalendarAsc, SortCalendarDesc, ClearFilterIcon } from '../../svg'
 import { Order } from '../../utils'
@@ -35,8 +36,14 @@ function SortByDate() {
 
   return (
     <div className="text-secondary cursor-pointer">
-      {sortKey && <ClearFilterIcon width="32" onClick={clearSortSettings} />}
-      <MatchingSortDirectionIcon width="35" onClick={changeDateSortingOrder} />
+      {sortKey && (
+        <RoleButton action={clearSortSettings}>
+          <ClearFilterIcon width="32" />
+        </RoleButton>
+      )}
+      <RoleButton action={changeDateSortingOrder}>
+        <MatchingSortDirectionIcon width="35" />
+      </RoleButton>
     </div>
   )
 }
