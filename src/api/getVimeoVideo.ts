@@ -38,7 +38,7 @@ async function getVimeoVideo(id: string): Promise<VimeoResponse> {
   }
 
   const { total: likesCount } = await fetchSingedReq(
-    `${API}/${id} /likes?fields=total`
+    `${API}/${id}/likes?fields=total`
   )
 
   return {
