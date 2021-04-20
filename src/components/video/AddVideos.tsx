@@ -35,6 +35,7 @@ function AddVideos() {
     if (newMovieHandler.current === null) return
 
     dispatch(videos.addVideo(newMovieHandler.current?.value))
+    newMovieHandler.current.value = ''
   }
 
   return (
