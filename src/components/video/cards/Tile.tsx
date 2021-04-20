@@ -51,7 +51,7 @@ function VideoListElement({
             <VideoStats
               date={formattedUploadDate}
               likes={format.number(likes)}
-              views={format.number(views || 0)}
+              views={format.number(views || -1)}
             />
           </CardSubtitle>
 
