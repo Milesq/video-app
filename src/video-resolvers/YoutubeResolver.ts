@@ -1,5 +1,6 @@
 import getYoutubeVideo from '../api/getYoutubeVideo'
 import { Video } from '../interfaces'
+import { setElementSizeFromString } from '../utils'
 
 import Resolver from './Resolver'
 
@@ -20,11 +21,13 @@ class YoutubeResolver extends Resolver {
       ],
     } = await getYoutubeVideo(this.id)
 
+    const iframe = setElementSizeFromString(embedHtml) as string
+
     return {
       id,
       title,
       src: thumbnails.high.url,
-      embedHtml,
+      embedHtml: iframe,
 
       views: parseInt(viewCount),
       likes: parseInt(likeCount),
