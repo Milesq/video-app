@@ -25,8 +25,9 @@ class YoutubeResolver extends Resolver {
 
     return {
       id,
+      src: `https://www.youtube.com/watch?v=${id}`,
       title,
-      src: thumbnails.high.url,
+      img: thumbnails.high.url,
       embedHtml: iframe,
 
       views: parseInt(viewCount),

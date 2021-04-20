@@ -23,7 +23,7 @@ function VideoListElement({
   const choosenTheme = useSelector(state => state.theme.theme)
   const isDark = choosenTheme === 'dark'
 
-  const { title, likes, views, uploadDate, src, embedHtml } = video
+  const { title, likes, views, uploadDate, img, embedHtml } = video
 
   const formattedUploadDate = format.date(uploadDate)
   const videoPlayer = useRef<VideoPlayerHandler>(null)
@@ -40,7 +40,7 @@ function VideoListElement({
         >
           <CardImg
             width="100%"
-            src={src}
+            src={img}
             alt={title}
             onClick={() => videoPlayer.current?.open()}
             className="cursor-pointer"

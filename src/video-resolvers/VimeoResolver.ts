@@ -29,8 +29,9 @@ class VimeoResolver extends Resolver {
 
     return {
       id: this.id,
+      src: `https://vimeo.com/${this.id}`,
       title: name,
-      src: this.getPicture(pictures).link,
+      img: this.getPicture(pictures).link,
       embedHtml: iframe,
 
       likes: parseInt(likes),
