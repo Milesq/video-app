@@ -2,14 +2,15 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Container, Row } from 'reactstrap'
 
-import { useSelector, videos } from '../../store'
+import { useSelector, videoList, videos } from '../../store'
 import { DiplayMode, SortKey } from '../../store/videoDisplayer'
 import { compareFunctions } from '../../utils'
 
-import VideoCard from './VideoCard'
+import PaginatedVideoList from './PaginatedVideoList'
 
 function ListVideos() {
   const dispatch = useDispatch()
+  const currentPage = useSelector(({ videoList }) => videoList.currentPage)
   let currentVideos = useSelector(({ videos }) => videos.videos)
 
   const currentDisplayMode = useSelector(
@@ -49,16 +50,16 @@ function ListVideos() {
   return (
     <Container fluid>
       <Row>
-        {currentVideos.map(video => (
-          <VideoCard
-            key={video.id}
-            video={video}
-            style={isListMode ? 'list' : 'tile'}
-            className="my-3"
-            onDelete={() => deleteMovie(video.id)}
-            onLike={() => swicthMovieLike(video.id)}
-          />
-        ))}
+        <PaginatedVideoList
+          currentPage={currentPage}
+          videos={currentVideos}
+          listMode={isListMode}
+          onDelete={deleteMovie}
+          onLike={swicthMovieLike}
+          onChangePageCount={count => dispatch(videoList.setPageCount(count))}
+          itemsPerPage={isListMode ? 10 : 6}
+        />
+
         {!currentVideos.length && (
           <h2 className="w-100 text-center h4">Brak zapisanych filmów</h2>
         )}
