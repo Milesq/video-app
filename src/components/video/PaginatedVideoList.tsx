@@ -39,7 +39,7 @@ function PaginatedVideoList({
 
   useEffect(() => {
     setCurrentPage(currentPage)
-  }, [currentPage])
+  }, [currentPage, videos])
 
   return (
     <>
