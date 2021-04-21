@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Container } from 'reactstrap'
+import { useDispatch } from 'react-redux'
 
 import { ThemeContext } from './utils'
 import { useSelector } from './store'
@@ -9,10 +10,16 @@ import AddVideos from './components/video/AddVideos'
 import ListVideos from './components/video/ListVideos'
 import ListController from './components/ListController'
 import PaginationController from './components/PaginationController'
+import { refreshAllVideos } from './store/videos'
 
 function App() {
+  const dispatch = useDispatch()
   const choosenTheme = useSelector(state => state.theme.theme)
   const isDark = choosenTheme === 'dark'
+
+  useEffect(() => {
+    dispatch(refreshAllVideos())
+  }, [])
 
   return (
     <ThemeContext.Provider value={choosenTheme}>

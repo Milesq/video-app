@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import merge from 'lodash.merge'
 
 import { VideoError } from '../errors'
 import { Video } from '../interfaces'
@@ -39,6 +40,17 @@ const addVideo = createAsyncThunk(
     )
 
     return Promise.all(distinctedVideos.map(resolve))
+  }
+)
+
+const refreshAllVideos = createAsyncThunk(
+  'videos/refreshAllVideos',
+  (_, { getState }) => {
+    const {
+      videos: { videos },
+    } = getState() as RootState
+
+    return Promise.all(videos.map(({ id }) => resolve(id)))
   }
 )
 
@@ -81,10 +93,13 @@ export const slice = createSlice({
 
         state.error = error.message as VideoError
       })
+      .addCase(refreshAllVideos.fulfilled, (state, { payload }) => {
+        state.videos = merge(state.videos, payload)
+      })
   },
 })
 
-export { addVideo }
+export { addVideo, refreshAllVideos }
 
 export const { clearAll, switchLike, remove } = slice.actions
 
