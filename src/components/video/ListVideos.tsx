@@ -57,6 +57,7 @@ function ListVideos() {
           onDelete={deleteMovie}
           onLike={swicthMovieLike}
           onChangePageCount={count => dispatch(videoList.setPageCount(count))}
+          itemsPerPage={isListMode ? 10 : 6}
         />
 
         {!currentVideos.length && (
