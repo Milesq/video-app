@@ -24,17 +24,18 @@ function PaginatedVideoList({
   currentPage,
   onChangePageCount,
 }: PaginatedVideoListProps) {
-  const { setCurrentPage, maxPages, currentItems } = usePagination({
+  const { setCurrentPage, currentItems } = usePagination({
     items: videos,
     itemsPerPage,
   })
+  const totalPages = Math.ceil(videos.length / itemsPerPage)
 
   useEffect(() => {
-    onChangePageCount?.(maxPages)
+    onChangePageCount?.(totalPages)
 
     // refresh currentItems
     setCurrentPage(currentPage)
-  }, [videos])
+  }, [totalPages])
 
   useEffect(() => {
     setCurrentPage(currentPage)
