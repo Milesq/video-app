@@ -17,7 +17,7 @@ interface PaginatedVideoListProps {
 
 function PaginatedVideoList({
   videos,
-  itemsPerPage = 2,
+  itemsPerPage = 6,
   listMode,
   onDelete,
   onLike,
