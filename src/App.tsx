@@ -8,6 +8,7 @@ import Footer from './components/layout/Footer'
 import AddVideos from './components/video/AddVideos'
 import ListVideos from './components/video/ListVideos'
 import ListController from './components/ListController'
+import PaginationController from './components/PaginationController'
 
 function App() {
   const choosenTheme = useSelector(state => state.theme.theme)
@@ -29,6 +30,7 @@ function App() {
               <AddVideos />
 
               <div className="my-5"></div>
+              <PaginationController />
               <ListController />
 
               <div className="my-3"></div>
