@@ -9,6 +9,9 @@ function PaginationController() {
   const { pageCount, currentPage } = useSelector(({ videoList }) => videoList)
   const theme = useSelector(({ theme }) => theme.theme)
 
+  // used to hide controller when changed videos
+  useSelector(({ videos }) => videos.videos)
+
   const isFirstPage = currentPage === 1
   const isLastPage = currentPage === pageCount
 
