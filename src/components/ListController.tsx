@@ -12,7 +12,10 @@ function Controller() {
   const demos = demoVideos()
 
   return (
-    <div className="d-flex justify-content-end" style={{ gap: 10 }}>
+    <div
+      className="d-flex justify-content-end align-items-center"
+      style={{ gap: 10 }}
+    >
       <SortByDate />
       <FavoritesOnly />
       <TileListView />

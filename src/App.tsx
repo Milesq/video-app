@@ -29,11 +29,20 @@ function App() {
             <section className="mt-md-5 mt-3">
               <AddVideos />
 
-              <div className="my-5"></div>
-              <PaginationController />
-              <ListController />
-
-              <div className="my-3"></div>
+              <div
+                className="
+                  d-flex
+                  justify-content-between
+                  align-items-center
+                  flex-column-reverse
+                  flex-md-row
+                  mt-5 px-md-3 w-100
+                "
+              >
+                <PaginationController />
+                <div className="d-md-none my-3"></div>
+                <ListController />
+              </div>
 
               <ListVideos />
             </section>
