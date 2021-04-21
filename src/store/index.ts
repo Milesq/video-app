@@ -14,6 +14,7 @@ import {
 } from 'redux-persist'
 
 import * as theme from './theme'
+import * as videoList from './videoList'
 import * as videoDisplayer from './videoDisplayer'
 import * as videos from './videos'
 
@@ -23,6 +24,7 @@ export const getStore = () =>
       theme: theme.reducer,
       videoDisplayer: videoDisplayer.reducer,
       videos: videos.reducer,
+      videoList: videoList.reducer,
     },
     middleware: getDefaultMiddleware({
       serializableCheck: {
@@ -37,7 +39,7 @@ export type RootState = ReturnType<AppStore['getState']>
 
 export const useSelector: TypedUseSelectorHook<RootState> = useGenericSelector
 
-export { theme, videoDisplayer, videos }
+export { theme, videoDisplayer, videoList, videos }
 
 export default () => {
   const storeInstance = getStore()
