@@ -41,14 +41,14 @@ function App() {
                   d-flex
                   justify-content-between
                   align-items-center
-                  flex-column-reverse
-                  flex-md-row
+                  flex-column
+                  flex-md-row-reverse
                   mt-5 px-md-3 w-100
                 "
               >
-                <PaginationController />
-                <div className="d-md-none my-3"></div>
                 <ListController />
+                <div className="d-md-none my-3"></div>
+                <PaginationController />
               </div>
 
               <ListVideos />
