@@ -16,29 +16,33 @@ function PaginationController() {
   const nextPage = () => dispatch(videoList.nextPage())
 
   return (
-    <Pagination>
-      <PaginationItem disabled={isFirstPage}>
-        <PaginationLink first onClick={() => setPage(1)} />
-      </PaginationItem>
-      <PaginationItem disabled={isFirstPage}>
-        <PaginationLink previous onClick={prevPage} />
-      </PaginationItem>
+    <>
+      {pageCount > 1 && (
+        <Pagination>
+          <PaginationItem disabled={isFirstPage}>
+            <PaginationLink first onClick={() => setPage(1)} />
+          </PaginationItem>
+          <PaginationItem disabled={isFirstPage}>
+            <PaginationLink previous onClick={prevPage} />
+          </PaginationItem>
 
-      {new Array(pageCount).fill(null).map((_, i) => (
-        <PaginationItem key={i} active={i + 1 === currentPage}>
-          <PaginationLink onClick={() => setPage(i + 1)}>
-            {i + 1}
-          </PaginationLink>
-        </PaginationItem>
-      ))}
+          {new Array(pageCount).fill(null).map((_, i) => (
+            <PaginationItem key={i} active={i + 1 === currentPage}>
+              <PaginationLink onClick={() => setPage(i + 1)}>
+                {i + 1}
+              </PaginationLink>
+            </PaginationItem>
+          ))}
 
-      <PaginationItem disabled={isLastPage}>
-        <PaginationLink next onClick={nextPage} />
-      </PaginationItem>
-      <PaginationItem disabled={isLastPage}>
-        <PaginationLink last onClick={() => setPage(pageCount)} />
-      </PaginationItem>
-    </Pagination>
+          <PaginationItem disabled={isLastPage}>
+            <PaginationLink next onClick={nextPage} />
+          </PaginationItem>
+          <PaginationItem disabled={isLastPage}>
+            <PaginationLink last onClick={() => setPage(pageCount)} />
+          </PaginationItem>
+        </Pagination>
+      )}
+    </>
   )
 }
 
