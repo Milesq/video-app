@@ -31,6 +31,9 @@ function PaginatedVideoList({
 
   useEffect(() => {
     onChangePageCount?.(maxPages)
+
+    // refresh currentItems
+    setCurrentPage(currentPage)
   }, [videos])
 
   useEffect(() => {
