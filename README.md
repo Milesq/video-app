@@ -13,11 +13,11 @@ There are some additional functions like:
 
 ## Instalation
 
-Before run application you have to install dependencies. I use `pnpm` so there is a lockfile in specific for `pnpm` format. You can use `npm` but it will take more time.
+Before run application you have to install dependencies. I used `yarn` so there is a lockfile in specific for `yarn` format. You can use `npm` but it will take more time.
 
 ```
-npm i -g pnpm
-pnpm i
+npm i -g yarn
+yarn
 ```
 
 or
@@ -35,7 +35,7 @@ Copy content of `.env.example` to new file `.env`. Now you have to create two ap
 Run
 
 ```
-pnpm dev
+yarn dev
 ```
 
 or
