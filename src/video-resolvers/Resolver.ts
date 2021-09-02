@@ -37,7 +37,8 @@ abstract class Resolver {
       return pathParts[0]
     } catch (err) {
       if (err instanceof TypeError) return urlOrId
-      else throw err
+
+      throw err
     }
   }
 }
